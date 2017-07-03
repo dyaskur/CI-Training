@@ -106,7 +106,7 @@ class Link_model extends CI_Model {
         $expired = time() + (24 * 60 * 60);
 
         $this->expired    = $expired; // please read the below note
-
+        unset($this->table);
 
         $this->db->insert('link', $this);
         return true;

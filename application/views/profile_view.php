@@ -12,7 +12,7 @@
         $("#generate").click(function(){
             var link=$("#link").val();
 
-            $.post("/link/index",
+            $.post("/link/ajax_add",
                 {
                     link: link
                 },
@@ -41,8 +41,8 @@
 			<ul class="nav navbar-nav navbar-right">
 				<?php if ($this->session->userdata('login')){ ?>
 				<li><p class="navbar-text">Hello <?php echo $this->session->userdata('uname'); ?></p></li>
-                    <li><a href="<?php echo base_url(); ?>profile/index">Add New Link</a></li>
-                    <li><a href="<?php echo base_url(); ?>datatable">View Added Links</a></li>
+                    <li><a href="<?php echo base_url(); ?>link/add">Add New Link</a></li>
+                    <li><a href="<?php echo base_url(); ?>link">View Added Links</a></li>
                     <li><a href="<?php echo base_url(); ?>home/logout">Log Out</a></li>				<?php } else { ?>
 				<li><a href="<?php echo base_url(); ?>login">Login</a></li>
 				<li><a href="<?php echo base_url(); ?>signup">Signup</a></li>

@@ -63,7 +63,7 @@ class Link extends CI_Controller
 
             if ($this->link_model->insert_entry($link,$code))
             {
-echo base_url()."u/".$code;
+echo base_url()."".$code;
             }
             else
             {
