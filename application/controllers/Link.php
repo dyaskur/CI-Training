@@ -25,7 +25,7 @@ class Link extends CI_Controller
         }
         else
         {
-            $code= substr(md5(rand()), 0, 7);
+            $code= substr(md5(rand()), 0, 8);
 
             if ($this->link_model->insert_entry($link,$code))
             {
@@ -37,5 +37,11 @@ echo base_url()."u/".$code;
   echo "error please try again";
             }
         }
+    }
+    public function pergi($code)
+    {
+       $link =  $this->link_model->get_link_bycode($code);
+        redirect($link[0]->link);
+
     }
 }

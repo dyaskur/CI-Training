@@ -17,9 +17,18 @@ class Link_model extends CI_Model {
         $query = $this->db->get('entries', 10);
         return $query->result();
     }
+    function get_link_bycode($code)
+    {
+        $this->db->where('code', $code);
+        $query = $this->db->get('link');
+        return $query->result();
+    }
 
     public function insert_entry($link, $code)
     {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
+            $link = "http://" . $link;
+        }
         $this->user_id    = $this->session->userdata('uid'); // please read the below note
         $this->link    = $link; // please read the below note
         $this->code    = $code; // please read the below note
