@@ -5,8 +5,9 @@
  * Date: 03/07/17
  * Time: 11:40
  */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends CI_Model {
+class User_model extends CI_Model {
 
     public $username;
     public $password;
@@ -16,6 +17,7 @@ class User extends CI_Model {
     public $created;
     public $updated;
     public $deleted;
+
 
     function get_user($email, $pwd)
     {

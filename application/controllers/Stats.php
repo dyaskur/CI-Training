@@ -7,12 +7,12 @@ class stats extends CI_Controller
 		$this->load->helper(array('url','html'));
 		$this->load->library('session');
 		$this->load->database();
-		$this->load->model('user','stats_model');
+		$this->load->model('user_model','stats_model');
 	}
 	
 	function index()
 	{
-		$details = $this->user->get_user_by_id($this->session->userdata('uid'));
+		$details = $this->user_model->get_user_by_id($this->session->userdata('uid'));
 		$data['uname'] = $details[0]->first_name . " " . $details[0]->last_name;
 		$data['uemail'] = $details[0]->email;
 		$this->load->view('stats_view', $data);

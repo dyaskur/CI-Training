@@ -7,7 +7,7 @@ class login extends CI_Controller
 		$this->load->helper(array('form','url','html'));
 		$this->load->library(array('session', 'form_validation'));
 		$this->load->database();
-		$this->load->model('user');
+		$this->load->model('user_model');
 	}
     public function index()
     {
@@ -27,7 +27,7 @@ class login extends CI_Controller
 		else
 		{
 			// check for user credentials
-			$uresult = $this->user->get_user($email, $password);
+			$uresult = $this->user_model->get_user($email, $password);
 			if (count($uresult) > 0)
 			{
 				// set session

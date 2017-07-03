@@ -1,4 +1,4 @@
-<? $this->load->view('head'); ?>
+<?php $this->load->view('head'); ?>
 
 
 <div class="container">
