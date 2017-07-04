@@ -45,6 +45,8 @@ class Migration_Add_User extends CI_Migration {
         ));
         $this->dbforge->add_key('id', TRUE);
         $this->dbforge->create_table('user');
+
+
         $this->dbforge->add_field(array(
             'id' => array(
                 'type' => 'INT',
@@ -75,6 +77,8 @@ class Migration_Add_User extends CI_Migration {
         ));
         $this->dbforge->add_key('id', TRUE);
         $this->dbforge->create_table('link');
+
+
         $this->dbforge->add_field(array(
             'id' => array(
                 'type' => 'INT',
