@@ -53,7 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['signup'] = 'signup';
 $route['login'] = 'login';
 $route['profile'] = 'profile';
-$route['(:any)'] = "link/pergi/$1";
+$route['go/(:any)'] = "link/pergi/$1";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
