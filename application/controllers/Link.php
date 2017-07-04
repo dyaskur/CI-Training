@@ -27,7 +27,7 @@ class Link extends CI_Controller
             $row[] = $no;
             $row[] = $link->link;
             $row[] = $link->code;
-            $row[] = "view";
+            $row[] = "<a href='/stats/view/$link->id'>view</a>";
 
             $data[] = $row;
         }
