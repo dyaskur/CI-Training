@@ -1,11 +1,20 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * Created by PhpStorm.
+ * User: ss
+ * Date: 03/07/17
+ * Time: 12:48
+ */
+class Stat_model extends CI_Model {
 
-class Stats_model extends CI_Model {
+    public $link_id;
+    public $browser;
+    public $ip;
+    public $time;
 
-    var $table = '';
-    var $column_order = array(null, 'FirstName','LastName','phone','address','city','country'); //set column field database for datatable orderable
-    var $column_search = array('FirstName','LastName','phone','address','city','country'); //set column field database for datatable searchable
+    var $table = 'stats';
+    var $column_order = array(null, 'browser','ip'); //set column field database for datatable orderable
+    var $column_search = array('browser','ip'); //set column field database for datatable searchable
     var $order = array('id' => 'asc'); // default order
 
     public function __construct()
@@ -74,5 +83,32 @@ class Stats_model extends CI_Model {
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
+    public function get_last_ten_entries()
+    {
+        $query = $this->db->get('entries', 10);
+        return $query->result();
+    }
+    function get_link_bycode($code)
+    {
+        $this->db->where('code', $code);
+        $query = $this->db->get('link');
+        return $query->result();
+    }
+
+    public function insert_stat($link_id)
+    {
+
+        $this->link_id  = $link_id; // please read the below note
+        $this->browser    = $_SERVER["HTTP_USER_AGENT"]; // please read the below note
+        $this->ip    = $_SERVER["REMOTE_ADDR"]; // please read the below note
+        $expired = time();
+
+        $this->time    = $expired; // please read the below note
+        unset($this->table);
+
+        $this->db->insert('link', $this);
+        return true;
+    }
+
 
 }

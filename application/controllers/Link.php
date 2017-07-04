@@ -18,7 +18,7 @@ class Link extends CI_Controller
 
     public function ajax_list()
     {
-        $list = $this->datatable->get_datatables();
+        $list = $this->link_model->get_datatables();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $link) {
@@ -34,8 +34,8 @@ class Link extends CI_Controller
 
         $output = array(
             "draw" => $_POST['draw'],
-            "recordsTotal" => $this->datatable->count_all(),
-            "recordsFiltered" => $this->datatable->count_filtered(),
+            "recordsTotal" => $this->link_model->count_all(),
+            "recordsFiltered" => $this->link_model->count_filtered(),
             "data" => $data,
         );
         //output to json format
@@ -75,7 +75,15 @@ echo base_url()."".$code;
     public function pergi($code)
     {
        $link =  $this->link_model->get_link_bycode($code);
-        redirect($link[0]->link);
+       if(time() <= $link[0]->expired)
+       {
+           redirect($link[0]->link);
+       }
+       else
+       {
+           $sisa = $link[0]->expired - time();
+           echo "link expired".$sisa;
+       }
 
     }
     function add()

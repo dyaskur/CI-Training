@@ -25,7 +25,7 @@
                 <?php if ($this->session->userdata('login')){ ?>
                     <li><p class="navbar-text">Hello <?php echo $this->session->userdata('uname'); ?></p></li>
                     <li><a href="<?php echo base_url(); ?>link/add">Add New Link</a></li>
-                    <li><a href="<?php echo base_url(); ?>link">View Added Links</a></li>
+                    <li><a href="<?php echo base_url(); ?>link/index">View Added Links</a></li>
                     <li><a href="<?php echo base_url(); ?>home/logout">Log Out</a></li>
                 <?php } else { ?>
                     <li><a href="<?php echo base_url(); ?>login">Login</a></li>
