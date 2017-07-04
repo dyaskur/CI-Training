@@ -7,7 +7,7 @@ class Link extends CI_Controller
         $this->load->helper(array('form','url','html'));
         $this->load->library(array('session', 'form_validation'));
         $this->load->database();
-        $this->load->model('link_model');
+        $this->load->model(array('link_model','stat_model'));
     }
 
     public function index()
@@ -77,6 +77,7 @@ echo base_url()."".$code;
        $link =  $this->link_model->get_link_bycode($code);
        if(time() <= $link[0]->expired)
        {
+           $this->stat_model->insert_stat($link[0]->id);
            redirect($link[0]->link);
        }
        else

@@ -106,7 +106,7 @@ class Stat_model extends CI_Model {
         $this->time    = $expired; // please read the below note
         unset($this->table);
 
-        $this->db->insert('link', $this);
+        $this->db->insert('stats', $this);
         return true;
     }
 
