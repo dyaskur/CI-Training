@@ -53,7 +53,7 @@
 
                         // Load data for the table's content from an Ajax source
                         "ajax": {
-                            "url": "<?php echo site_url('stats/ajax_list')?>",
+                            "url": "<?php echo site_url('stats/ajax_list/'.$link_id)?>",
                             "type": "POST"
                         },
 
